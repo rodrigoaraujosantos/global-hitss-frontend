@@ -1,0 +1,50 @@
+{
+  "lists": [
+    {
+      "id": "2d0f",
+      "name": "Lista de Natal"
+    },
+    {
+      "id": "f569",
+      "name": "Ultima lista graças a Deus"
+    }
+  ],
+  "itens": [
+    {
+      "id": "f7dd",
+      "name": "teclado sem fio",
+      "quantidade": "22",
+      "list": {
+        "id": "7b71",
+        "name": "teste"
+      }
+    },
+    {
+      "id": "a594",
+      "name": "Alface americana",
+      "quantidade": "1",
+      "list": {
+        "id": "f3fa",
+        "name": "Feira de domingo"
+      }
+    },
+    {
+      "id": "a0ad",
+      "name": "batata",
+      "quantidade": "3",
+      "list": {
+        "id": "f3fa",
+        "name": "Feira de domingo"
+      }
+    },
+    {
+      "id": "ad46",
+      "name": "laranja",
+      "quantidade": "2",
+      "list": {
+        "id": "f3fa",
+        "name": "Feira de domingo"
+      }
+    }
+  ]
+}
