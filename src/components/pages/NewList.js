@@ -6,11 +6,12 @@ function NewList() {
 
   const history = useHistory()
 
-  function createPost(list){
-    fetch("http://localhost:5000/lists", {
+  function createList(list){
+
+    fetch("http://localhost:3000/lista", {
       method: "POST",
       headers: {
-        "Content-Type": "application/jon",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(list)
     }).then((resp) => resp.json())
@@ -26,7 +27,7 @@ function NewList() {
     <div className={styles.newlist_container} >
       <h1>Criar Lista</h1>
       <p>Crie sua lista para depois adicionar itens</p>
-      <ListForm handleSubmit={createPost} btnText="Criar lista"/>
+      <ListForm handleSubmit={createList} btnText="Criar lista"/>
     </div>
   )
 }

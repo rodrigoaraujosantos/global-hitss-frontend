@@ -33,8 +33,9 @@ function List(){
 
   }, [id])
 
-  function editPost(list){
-    fetch(`http://localhost:5000/lists/${list.id}`, {
+  function editList(list){
+    
+    fetch(`http://localhost:3000/lista/${list.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -56,25 +57,25 @@ function List(){
 
   return (
     <div>
-      {list.name ? (
+      {list.nome ? (
         <div className={styles.list_details}>
           <Container customClass="column">
           {message && <Message type={type} msg={message} />}
             <div className={styles.details_container}>
-              <h1>Lista: {list.name}</h1>
+              <h1>Lista: {list.nome}</h1>
               <button className={styles.btn} onClick={toggleListForm} >
                 {!showListForm ? 'Editar lista' : 'Fechar'}
               </button>
               {!showListForm ? (
                 <div className={styles.list_info}>
                   <p>
-                    <span>Nome:</span> {list.name}
+                    <span>Nome:</span> {list.nome}
                   </p>
                 </div>
               ) : (
                 <div className={styles.list_info}>
                   <ListForm
-                    handleSubmit={editPost}
+                    handleSubmit={editList}
                     btnText="Concluir edição"
                     listData={list}
                   />

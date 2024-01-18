@@ -24,7 +24,7 @@ function ListForm({ handleSubmit, btnText, listData }){
       <Input
         type="text"
         text="Nome da lista"
-        name="name"
+        name="nome"
         placeholder="Insira o nome da lista"
         handleOnChange={handleChange}
       />

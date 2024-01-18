@@ -1,13 +1,15 @@
-import Message from '../layout/Message'
-import { useLocation } from 'react-router-dom'
-import styles from './Lists.module.css'
-import Container from '../layout/Container'
-import Loading from '../layout/Loading'
-import LinkButton from '../layout/LinkButton'
+import axios from 'axios';
+import Message from '../layout/Message';
+import { useLocation } from 'react-router-dom';
+import styles from './Lists.module.css';
+import Container from '../layout/Container';
+import Loading from '../layout/Loading';
+import LinkButton from '../layout/LinkButton';
 import ListCard from '../list/ListCard'
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
-function Lists(){
+
+function Lists(){  
 
   const [ lists, setLists ] = useState([])
   const [ removeLoading, setRemoveLoading ] = useState(false)
@@ -19,34 +21,33 @@ function Lists(){
     message = location.state.message
   }
 
-  useEffect(() => {
-    fetch('http://localhost:5000/lists', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-      // console.log(data);
+  const getLists = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/lista")
+      // const data = response.data;
+      const data = response.data
+      console.log(data);
       setLists(data)
       setRemoveLoading(true)
-    })
-    .catch((err) => console.log(err))
-  }, [])
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log(lists);
+  useEffect(() => {
+    getLists();
+  }, []);
 
-  function removeList(id){
-    fetch(`http://localhost:5000/lists/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    }).then((resp) => resp.json())
-    .then((data) => {
+  const removeList = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/lista/${id}`)
+
       setLists(lists.filter((list) => list.id !== id))
       setListMessage('Lista removida com sucesso!')
-    })
-    .catch((err) => console.log(err))
+      
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -62,7 +63,7 @@ function Lists(){
           lists.map((list) => (
           <ListCard
             id={list.id}
-            name={list.name}
+            name={list.nome}
             key={list.id}
             handleRemove={removeList}
          />
