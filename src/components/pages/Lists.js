@@ -24,16 +24,18 @@ function Lists(){
   const getLists = async () => {
     try {
       const response = await axios.get("http://localhost:3000/lista")
-      // const data = response.data;
+      
       const data = response.data
-      console.log(data);
+      
       setLists(data)
+
       setRemoveLoading(true)
+
     } catch (error) {
       console.log(error);
     }
   }
-  console.log(lists);
+  
   useEffect(() => {
     getLists();
   }, []);
@@ -43,6 +45,7 @@ function Lists(){
       await axios.delete(`http://localhost:3000/lista/${id}`)
 
       setLists(lists.filter((list) => list.id !== id))
+      
       setListMessage('Lista removida com sucesso!')
       
     } catch (error) {

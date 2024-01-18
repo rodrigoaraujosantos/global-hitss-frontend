@@ -6,6 +6,7 @@ import Loading from '../layout/Loading'
 import LinkButton from '../layout/LinkButton'
 import ItemCard from '../item/ItemCard'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function Itens(){
 
@@ -19,34 +20,68 @@ function Itens(){
     message = location.state.message
   }
 
-  useEffect(() => {
-    fetch('http://localhost:5000/itens', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-      // console.log(data);
-      setItens(data)
-      setRemoveLoading(true)
-    })
-    .catch((err) => console.log(err))
-  }, [])
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/itens', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //   .then((resp) => resp.json())
+  //   .then((data) => {
+  //     // console.log(data);
+  //     setItens(data)
+  //     setRemoveLoading(true)
+  //   })
+  //   .catch((err) => console.log(err))
+  // }, [])
 
-  function removeItem(id){
-    fetch(`http://localhost:5000/itens/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    }).then((resp) => resp.json())
-    .then(() => {
+  const getItens = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/item")
+      
+      const data = response.data
+
+      console.log(data);
+      
+      setItens(data)
+
+      setRemoveLoading(true)
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getItens();
+  }, []);
+
+  // function removeItem(id){
+  //   fetch(`http://localhost:5000/itens/${id}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //   }).then((resp) => resp.json())
+  //   .then(() => {
+  //     setItens(itens.filter((item) => item.id !== id))
+  //     setItemMessage('Item removido com sucesso!')
+  //   })
+  //   .catch((err) => console.log(err))
+  // }
+
+  const removeItem = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/item/${id}`)
+
       setItens(itens.filter((item) => item.id !== id))
+      
       setItemMessage('Item removido com sucesso!')
-    })
-    .catch((err) => console.log(err))
+      
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -62,9 +97,9 @@ function Itens(){
           itens.map((item) => (
           <ItemCard
             id={item.id}
-            name={item.name}
+            name={item.nome}
             quantidade={item.quantidade}
-            list={item.list.name}
+            list={item.nome_lista}
             key={item.id}
             handleRemove={removeItem}
          />

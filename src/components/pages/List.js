@@ -20,7 +20,7 @@ function List(){
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/lists/${id}`, {
+    fetch(`http://localhost:3000/lista/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function List(){
   function editList(list){
     
     fetch(`http://localhost:3000/lista/${list.id}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
