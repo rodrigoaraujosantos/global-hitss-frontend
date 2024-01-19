@@ -3,13 +3,13 @@ import Container from './Container'
 import styles from './NavBar.module.css'
 import logo from '../../img/logo.png'
 
-function NavBar(){
+function NavBar() {
   return (
     <nav className={styles.navBar}>
       <Container>
-        <Link to="/">
-          <img width={150} src={logo} alt='Logo fabrica'/>
-        </Link>
+        <a href="https://globalhitss.com/" target="_blank" rel="noopener noreferrer">
+          <img width={150} src={logo} alt='Logo fabrica' />
+        </a>
         <ul className={styles.list}>
           <li className={styles.item}>
             <Link to="/">Home</Link>
@@ -26,7 +26,7 @@ function NavBar(){
           <li className={styles.item}>
             <Link to="/contact">Contato</Link>
           </li>
-          
+
         </ul>
       </Container>
     </nav>
