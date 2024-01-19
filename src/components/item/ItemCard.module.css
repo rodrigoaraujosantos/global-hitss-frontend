@@ -17,10 +17,12 @@
 .item_card p {
   color: #7a7a7a;
   margin-bottom: 1em;
+  margin-right: 8em;
 }
 
  .item_card p span {
   font-weight: bold;
+  margin-right: .5em;
 }
 
 .list_text {

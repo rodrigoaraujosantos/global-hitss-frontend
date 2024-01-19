@@ -20,7 +20,7 @@ function Item() {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/itens/${id}`, {
+    fetch(`http://localhost:3000/item/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function Item() {
   }, [id])
 
   function editPost(item){
-    fetch(`http://localhost:5000/itens/${item.id}`, {
+    fetch(`http://localhost:3000/item/${item.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ function Item() {
           <Container customClass="column">
             {message && <Message type={type} msg={message} />}
             <div className={styles.details_container}>
-              <h1>Item: {item.name}</h1>
+              <h1>Item: {item.nome}</h1>
               <button className={styles.btn} onClick={toggleItemForm} >
                 {!showItemForm ? 'Editar item' : 'Fechar'}
               </button>

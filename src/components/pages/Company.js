@@ -6,35 +6,37 @@ function Company() {
       <h1>Empresa</h1>
 
       <section>
-        <h2>Misión</h2>
+        <h2>MISSÃO</h2>
         <p>
-          Ser la empresa que crea e integra tecnologías de información, comunicaciones y servicios digitales habilitando soluciones especializadas para contribuir al logro de los objetivos de nuestros clientes.
+        Ser a empresa que cria e integra tecnologias de informação, comunicações e serviços digitais, possibilitando soluções especializadas que contribuam para a concretização dos objetivos dos nossos clientes.
         </p>
       </section>
 
       <section>
-        <h2>Visión</h2>
+        <h2>VISÃO</h2>
         <p>
-          Ser la empresa líder a nivel global en la evolución de la Sociedad Digital.
+        Ser a empresa líder global na evolução da Sociedade Digital. 
         </p>
       </section>
 
       <section>
-        <h2>Política de Calidad</h2>
+        <h2>POLÍTICA DE QUALIDADE</h2>
         <p>
-          Contribuir en la transformación y evolución de la sociedad digital ofreciendo soluciones y servicios de tecnología orientados a obtener la satisfacción de nuestros clientes, mediante una entrega oportuna y con calidad, buscando constantemente la mejora continua y el cumplimiento de los requisitos aplicables.
+        Contribuir para a  transformação e evolução da sociedade digital  , oferecendo soluções e serviços tecnológicos que visam obter a  satisfação de nossos clientes,  por meio de entrega pontual e de qualidade, buscando constantemente a melhoria contínua e o atendimento aos requisitos aplicáveis.
         </p>
       </section>
 
       <section>
-        <h2>Seguridad y Salud en el Trabajo</h2>
+        <h2>SEGURANÇA E SAÚDE NO TRABALHO</h2>
         <p>
-          En Hitss Solutions, S.A. de C.V. estamos comprometidos a mejorar continuamente la eficacia de nuestro Sistema de Gestión de Seguridad y Salud en el Trabajo (SGSST) conforme a los siguientes principios:
+        Na Hitss Solutions, SA de CV estamos empenhados em melhorar continuamente a eficácia do nosso Sistema de Gestão de Segurança e Saúde no Trabalho (SGSST) de acordo com os seguintes princípios:
+
+
         </p>
         <p>
-          Cumplir con la normatividad aplicable.
-          Preservar la salud, seguridad e higiene de nuestra gente, visitantes y contratistas, a través de la prevención de lesiones y enfermedades.
-          Poner a disposición de los trabajadores mecanismos válidos y eficaces para promover su participación y consulta.
+        Cumpra os regulamentos aplicáveis .
+Preservar a saúde, segurança e higiene de nosso pessoal, visitantes e contratados, através da prevenção de lesões e doenças e,
+Disponibilizar aos trabalhadores mecanismos válidos e eficazes para promover a sua participação e consulta, a fim de obter a sua opinião sobre a adequação de medidas organizacionais ou materiais para reduzir ou eliminar riscos , favorecendo a integração da prevenção.
         </p>
       </section>
     </div>

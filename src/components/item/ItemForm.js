@@ -15,9 +15,9 @@ function ItemForm({ handleSubmit, btnText, itemData }) {
   const getLists = async () => {
     try {
       const response = await axios.get("http://localhost:3000/lista")
-      
+
       const data = response.data
-      
+
       setLists(data)
 
       console.log(data);
@@ -33,7 +33,6 @@ function ItemForm({ handleSubmit, btnText, itemData }) {
 
   const submit = (e) => {
     e.preventDefault()
-    // console.log(item);
     handleSubmit(item)
   }
 
@@ -42,11 +41,12 @@ function ItemForm({ handleSubmit, btnText, itemData }) {
   }
 
   function handleList(e) {
-    setItem({ ...item, list: {
-      id: e.target.value,
-      name: e.target.options[e.target.selectedIndex].text, 
-    } })
+    setItem({
+      ...item, id_lista: e.target.value,
+      nome: e.target.options[e.target.selectedIndex].text,
+    });
   }
+
 
 
   return (
@@ -70,12 +70,13 @@ function ItemForm({ handleSubmit, btnText, itemData }) {
       />
 
       <Select
-        name="lists_id"
+        name="id_lista"
         text="Selecione a lista"
         options={lists}
         handleOnChange={handleList}
-        value={item.list ? item.list.id : ""}
+        value={item.id_lista ? item.id_lista : ""}
       />
+
 
       <SubmitButton text={btnText} />
     </form>
