@@ -4,6 +4,7 @@ import styles from './ItemForm.module.css'
 import Input from '../form/Input'
 import SubmitButton from '../form/SubmitButton'
 import Select from '../form/Select'
+import axios from 'axios'
 
 function ItemForm({ handleSubmit, btnText, itemData }) {
 
@@ -11,18 +12,24 @@ function ItemForm({ handleSubmit, btnText, itemData }) {
 
   const [item, setItem] = useState(itemData || {})
 
+  const getLists = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/lista")
+      
+      const data = response.data
+      
+      setLists(data)
+
+      console.log(data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    fetch('http://localhost:5000/lists', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json'
-      }
-    }).then((resp) => resp.json())
-      .then((data) => {
-        setLists(data)
-      })
-      .catch(err => console.log(err))
-  }, [])
+    getLists();
+  }, []);
 
   const submit = (e) => {
     e.preventDefault()
@@ -47,10 +54,10 @@ function ItemForm({ handleSubmit, btnText, itemData }) {
       <Input
         type="text"
         text="Nome"
-        name="name"
+        name="nome"
         placeholder="Insira o nome do item"
         handleOnChange={handleChange}
-        value={item.name ? item.name : ""}
+        value={item.nome ? item.nome : ""}
       />
 
       <Input

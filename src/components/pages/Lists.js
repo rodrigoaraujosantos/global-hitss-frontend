@@ -29,6 +29,8 @@ function Lists(){
       
       setLists(data)
 
+      console.log(data);
+
       setRemoveLoading(true)
 
     } catch (error) {
@@ -45,7 +47,7 @@ function Lists(){
       await axios.delete(`http://localhost:3000/lista/${id}`)
 
       setLists(lists.filter((list) => list.id !== id))
-      
+
       setListMessage('Lista removida com sucesso!')
       
     } catch (error) {

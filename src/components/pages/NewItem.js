@@ -13,7 +13,7 @@ function NewItem() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(item),
+      body: JSON.stringify(item)
     }).then((resp) => resp.json())
     .then((data) => {
       console.log(data)
