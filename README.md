@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+Nome do projeto: Listas de compras.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Banco de dados:
 
-## Available Scripts
+Primeiramente, foi pensado em como estruturar e modelar o banco de dados.
 
-In the project directory, you can run:
+Descidi que seria criado duas tabelas, uma de listas e outra de itens.
 
-### `npm start`
+Ferramenta usada para o Postgres, foi o Bekeeper.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Primeiro criei a tabela 'listas' e depois a de 'itens' com relacionamento a tabela de listas.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Backend:
 
-### `npm test`
+Criação de um novo projeto 'Node'.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Instalação das bibliotécas (express, knex, pg, dotenv e cors).
 
-### `npm run build`
+Estruturação de pastas do projeto.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Criação das rotas.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Implementação dos controlers.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Implementação da conexão com o banco de dados através das credênciais.
 
-### `npm run eject`
+Utilizado a ferramenta 'Postman' para fazer requisições no backend, assim podendo testar cada rota.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Criado repositório no 'Github' para controle de versão e armazenamento do projeto.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Frontend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Criação de um novo projeto com 'React'
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Instalação das bibliotécas ('axios', 'json-server', 'react-dom', 'react-icons', 'react-router-dom', 'react-scripts', 'web-vitals').
 
-## Learn More
+Estruturação de pastas do projeto, a base do 'React' é a componentização, todos os componentes podem ser reutilizados quando necessário.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Implementação dos estilos das páginas (Componente.module.css).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Criado repositório no 'Github' para controle de versão e armazenamento do projeto.
 
-### Code Splitting
+- Implementação de conexão do frontend com o backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Utilizado a bibliotéca 'Axios' para fazer a requisição de cada endpoint.
