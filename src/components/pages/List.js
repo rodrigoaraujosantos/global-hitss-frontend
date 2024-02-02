@@ -1,69 +1,66 @@
-import styles from './List.module.css'
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react'
-import Loading from '../layout/Loading'
-import Container from '../layout/Container'
-import Message from '../layout/Message'
-import ListForm from '../list/ListForm'
+import axios from 'axios';
+import Loading from '../layout/Loading';
+import Container from '../layout/Container';
+import Message from '../layout/Message';
+import ListForm from '../list/ListForm';
+import styles from './List.module.css';
 
-function List(){
 
-  const { id } = useParams()
 
-  const [ list, setList ] = useState([])
+const API_URL = 'http://localhost:3000';
 
-  const [ showListForm, setShowListForm ] = useState(false)
+function List() {
+  const { id } = useParams();
+  const [list, setList] = useState({});
+  const [showListForm, setShowListForm] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
-  const [ message, setMessage ] = useState("")
-
-  const [ type, setType ] = useState()
+  
 
   useEffect(() => {
-
-    fetch(`http://localhost:3000/lista/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
+    const fetchList = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/listas/${id}`);
+        setList(response.data);
+      } catch (error) {
+        console.error('Erro ao obter os detalhes da lista:', error);
+        setError('Erro ao carregar os detalhes da lista.');
       }
-    }).then((resp) => resp.json())
-    .then((data) => {
-      setList(data)
-    })
-    .catch((err) => console.log(err))
+    };
 
-  }, [id])
+    fetchList();
+  }, [id]);
 
-  function editList(list){
-    
-    fetch(`http://localhost:3000/lista/${list.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(list),
-    }).then((resp) => resp.json())
-    .then((data) => {
-      setList(data)
-      setShowListForm(false)
-      setMessage('Lista atualizada!')
-      setType('success')
-    })
-    .catch((err) => console.log(err))
-  }
+  const editList = async (updatedList) => {
+    try {
+      const response = await axios.put(`${API_URL}/listas/${id}`, updatedList);
+      setList(response.data);
+      setShowListForm(false);
+      setMessage('Lista atualizada com sucesso!');
+    } catch (error) {
+      console.error('Erro ao atualizar a lista:', error);
+      setError('Erro ao atualizar a lista.');
+    }
+  };
 
-  function toggleListForm(){
-    setShowListForm(!showListForm)
-  }
+  const toggleListForm = () => {
+    setShowListForm(!showListForm);
+  };
+  
 
   return (
     <div>
       {list.nome ? (
         <div className={styles.list_details}>
           <Container customClass="column">
-          {message && <Message type={type} msg={message} />}
+            {message && <Message type="success" msg={message} />}
+            {error && <Message type="error" msg={error} />}
             <div className={styles.details_container}>
               <h1>Lista: {list.nome}</h1>
-              <button className={styles.btn} onClick={toggleListForm} >
+              <button className={styles.btn} onClick={toggleListForm}>
                 {!showListForm ? 'Editar lista' : 'Fechar'}
               </button>
               {!showListForm ? (
@@ -74,11 +71,7 @@ function List(){
                 </div>
               ) : (
                 <div className={styles.list_info}>
-                  <ListForm
-                    handleSubmit={editList}
-                    btnText="Concluir edição"
-                    listData={list}
-                  />
+                  <ListForm handleSubmit={editList} btnText="Concluir edição" listData={list} />
                 </div>
               )}
             </div>
@@ -88,7 +81,7 @@ function List(){
         <Loading />
       )}
     </div>
-  )
+  );
 }
 
-export default List
+export default List;
